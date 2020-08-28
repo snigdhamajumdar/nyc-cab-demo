@@ -1,0 +1,38 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.3.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id "io.freefair.lombok" version "5.1.1"
+	id 'java'
+}
+
+group = 'com.nyc.cab'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	compile("org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-tomcat:1.5.8.RELEASE")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
+
+	testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.17.1'
+	testCompile group: 'org.mockito', name: 'mockito-core', version: '2.16.0'
+	testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.6.2'
+	testCompile group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.6.2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	testCompile('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+	testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '5.3.4.RELEASE'
+	implementation 'junit:junit:4.12'
+}
+test {
+	useJUnitPlatform()
+}
